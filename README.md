@@ -1,50 +1,76 @@
-# Welcome to your Expo app 👋
+## Build locally
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+https://docs.expo.dev/get-started/set-up-your-environment/
+npx expo run:ios
 
-## Get started
+`build for emulator`
+https://docs.expo.dev/develop/development-builds/create-a-build/
 
-1. Install dependencies
+`development build need to connect with local server to run`
 
-   ```bash
-   npm install
-   ```
+- eas build --profile development --platform ios
 
-2. Start the app
+`preview build don't need to connect with local server to run aka run it but just installing it`
 
-   ```bash
-   npx expo start
-   ```
+- eas build -p ios --profile preview
 
-In the output, you'll find options to open the app in a
+## Local build | `This is working with linux and mac only`
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+https://docs.expo.dev/build-reference/local-builds/
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+eas build --platform ios --local
+eas build --platform ios --local --profile development
+eas build --platform ios --local --profile preview_aab
 
-## Get a fresh project
+## File size
 
-When you're ready, run:
+https://github.com/expo/fyi/blob/main/android-app-size.md
 
-```bash
-npm run reset-project
-```
+## How to build app for devices
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+https://docs.expo.dev/develop/development-builds/create-a-build/
 
-## Learn more
+## how to test builds on IOS
 
-To learn more about developing your project with Expo, look at the following resources:
+https://docs.expo.dev/build/internal-distribution/
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## how to install the specific version of builds
 
-## Join the community
+- eas build:run -p android
+- https://docs.expo.dev/build-reference/apk/
 
-Join our community of developers creating universal apps.
+## Expo code
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Once you've added the Expo code, you must prebuild your app before running it.
+
+`npx expo prebuild --platform android  --clean`
+`adb uninstall com.anishjain.mr-app`
+`npx expo prebuild --platform ios  --clean`
+
+## How to run app on device
+
+Expo Go is the fastest way to run your app but superwall needs development build to run.
+
+`Expo Go`
+
+- npx run ios
+- npx run android
+
+`Development Build`
+
+- npx expo run:ios
+- npx expo run:android
+
+## My 2penies
+
+it's might not work though I have tested it on my `M4 MacBook Pro` making react native expo app is most frustrating experience of my development journey.
+
+so if you are using shitty machine don't even bother to try it. it's a waste of time web dev is so much fun.
+
+but if you are stil here please use
+
+- Convex for backend, don't even bother to use to expo sqlite OMG making local database is so hard look around I have other `Boote` using it and dug your grave
+
+- and keep refeshing, keep refeshing, keep refeshing it's might work.
+
+Your Welcome :)

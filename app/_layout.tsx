@@ -29,7 +29,7 @@ export default function RootLayout() {
         Crypto.CryptoDigestAlgorithm.SHA256,
         "GitHub stars are neat 🌟"
       );
-      console.log("Digest: ", digest);
+      // Please create a user in convex with the user_id as the id otherwise profile will not work
       Storage.setItemSync("user_id", digest);
     })();
   }, []);

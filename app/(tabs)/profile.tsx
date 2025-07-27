@@ -99,7 +99,6 @@ function LeaderboardRow({
 
 export default function ProfileScreen() {
   const userId = Storage.getItemSync("user_id") as string;
-  console.log("User ID: ", userId);
   const userStats = useQuery(api.userStats.getUserStats, {
     userId: userId ? userId : "skip",
   });

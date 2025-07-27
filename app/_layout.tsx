@@ -11,7 +11,10 @@ import { Stack } from "expo-router";
 import Storage from "expo-sqlite/kv-store";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
+
+import { OnboardingProvider } from "@/contexts/OnboardingContext";
 
 const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
   unsavedChangesWarning: false,
@@ -42,10 +45,18 @@ export default function RootLayout() {
   return (
     <ConvexProvider client={convex}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <OnboardingProvider>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="onboarding"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </OnboardingProvider>
+        </GestureHandlerRootView>
         <StatusBar style="auto" />
       </ThemeProvider>
     </ConvexProvider>
